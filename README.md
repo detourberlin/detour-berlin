@@ -1,4 +1,5 @@
-Detour Berlin – The Ultimate Luxury Experience ✨
+# Detour Berlin – The Ultimate Luxury Experience
+
 🚀 Welcome to Detour Berlin – a premium, cutting-edge digital platform uniting two exclusive brands:
 
 👔 Samba – Timeless Elegance & High-End Formalwear
@@ -49,7 +50,7 @@ Copy
 Edit
 npm install
 
-# or
+## Alternatively
 
 yarn install
 3️⃣ Start the Development Server
@@ -59,7 +60,7 @@ Copy
 Edit
 npm run dev
 
-# or
+## or
 
 yarn dev
 🔹 Open <http://localhost:3000> in your browser to explore the website.
