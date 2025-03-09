@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌑 Global Styles */
+body {
+  @apply bg-primary text-dark font-sans antialiased;
+}
+
+/* 🎨 Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🖥️ Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B8860B, #D4AF37);
+  border-radius: 10px;
+}
+
+/* ✨ Button Styling */
+.join-button {
+  @apply px-6 py-3 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-white font-bold transition-all shadow-lg;
+  @apply hover:scale-105 hover:shadow-2xl hover:brightness-110 active:scale-95 active:brightness-90;
+}
+
+/* 🏛️ Navbar Styling */
+.navbar {
+  @apply w-full fixed top-0 left-0 flex justify-between items-center px-8 py-4 z-50 backdrop-blur-md shadow-md transition-all duration-300;
+}
+
+.nav-item {
+  @apply text-lg font-medium text-secondary hover:text-accent transition-colors;
+}
+
+/* 🏆 VIP Membership Card Styling */
+.membership-card {
+  @apply relative p-6 rounded-3xl shadow-xl flex flex-col justify-between overflow-hidden transition-all duration-500 border border-gray-700 bg-primary;
+}
+
+/* 🚀 Hover Effect: Soft Glow, No Blur */
+.membership-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 10px 50px rgba(255, 255, 255, 0.1);
+  /* Premium Glow */
+}
+
+/* 🛑 Ensure No Blur is Applied */
+.membership-card:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  backdrop-filter: none !important;
+  /* Completely Disable Blur */
+}
+
+/* 🔹 Soft Platinum Glow Effect */
+@keyframes subtle-glow {
+  0% {
+    opacity: 0.05;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.05;
+  }
+}
+
+.animate-subtle-glow {
+  animation: subtle-glow 3s infinite ease-in-out;
+}
+
+/* 🔮 Glassmorphism Effect */
+.bg-glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 🚀 Floating Animation */
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: floating 3s infinite ease-in-out;
+}
+
+/* 💎 Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* 🎭 Page Transition */
+.page-transition {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* 🌟 Custom Hover Effects */
+@layer components {
+  .nav-item {
+    @apply text-lg font-medium text-secondary hover:text-accent transition-all duration-300 hover:scale-105;
+  }
+
+  .luxury-link {
+    @apply text-accent transition-all duration-300;
+  }
+
+  .luxury-link:hover {
+    color: #D4AF37;
+    text-shadow: 0px 2px 10px rgba(212, 175, 55, 0.5);
+  }
+}
