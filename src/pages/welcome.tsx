@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function WelcomePage() {
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen flex justify-center items-center overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay
@@ -20,7 +20,7 @@ export default function WelcomePage() {
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
 
       {/* Content */}
-      <div className="relative flex flex-col items-center justify-center h-full text-center text-white px-6">
+      <div className="relative flex flex-col items-center text-center text-white px-6">
         {/* Animated Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
@@ -29,7 +29,7 @@ export default function WelcomePage() {
           className="mb-8"
         >
           <Image
-            src="/logo.png"
+            src="/logo_white.png"
             alt="Detour Berlin Logo"
             width={280}
             height={150}
@@ -52,9 +52,10 @@ export default function WelcomePage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-          className="text-2xl mt-4 max-w-3xl text-gray-300 font-light italic"
+          className="text-2xl mt-4 text-gray-300 font-light italic whitespace-nowrap"
         >
-          A new era of prestige designed for the select few
+          A New Era of Exclusivity is Unfolding | Eine neue Ära der Exklusivität
+          beginnt
         </motion.p>
 
         {/* Subtle Gold Line Animation */}
@@ -62,7 +63,7 @@ export default function WelcomePage() {
           initial={{ width: "0%" }}
           animate={{ width: "50%" }}
           transition={{ duration: 1.8, ease: "easeOut" }}
-          className="mt-6 h-[2px] bg-[#E6CBA8]"
+          className="mt-4 h-[2px] bg-[#E6CBA8] w-1/2"
         ></motion.div>
       </div>
     </div>
