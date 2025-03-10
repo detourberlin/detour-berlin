@@ -3,22 +3,30 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, LogIn } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-transparent backdrop-blur-lg shadow-md z-50 transition-all duration-300">
+    <nav className="fixed top-0 left-0 w-full h-20 bg-transparent backdrop-blur-lg shadow-md z-50 transition-all duration-300">
       <div className="w-full flex items-center justify-between px-8 py-4">
-        {/* Company Name (Fully Left-Aligned) */}
+        {/* Logo (Fully Left-Aligned) */}
         <div className="w-1/3">
-          <Link href="/" className="text-2xl font-bold text-[#4A403A]">
-            Detour Berlin
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Detour Berlin Logo"
+              width={140} // Increased size
+              height={50} // Adjusted height for better proportions
+              priority
+              className="cursor-pointer object-contain"
+            />
           </Link>
         </div>
 
         {/* Navigation Menu (Centered) */}
-        <div className="w-1/3 flex justify-center space-x-8 text-lg font-medium text-[#4A403A]">
+        <div className="w-1/3 hidden md:flex justify-center space-x-8 text-lg font-medium text-[#4A403A]">
           <Link href="/benefits" className="hover:text-[#8D775F] transition">
             Benefits
           </Link>
@@ -44,15 +52,15 @@ export default function Navbar() {
           >
             <LogIn size={28} />
           </Link>
-        </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-[#4A403A]"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden ml-4 text-[#4A403A]"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

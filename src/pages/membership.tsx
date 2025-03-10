@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Membership() {
   return (
-    <div className="w-full bg-[#F5EFE7] text-[#4A403A] min-h-screen">
+    <div className="w-full bg-[#F5EFE7] text-[#4A403A]">
       {/* Navbar */}
       <Navbar />
 
@@ -25,26 +25,29 @@ export default function Membership() {
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           className="mt-6 text-lg md:text-2xl text-[#8D775F] max-w-2xl"
         >
-          Unlock a world of **exclusive perks, premium fashion drops, and VIP event access**.
+          Unlock a world of{" "}
+          <b>exclusive perks, premium fashion drops, and VIP event access.</b>
         </motion.p>
       </section>
 
-      {/* Membership Benefits */}
-      <section className="w-full flex flex-wrap justify-center items-center gap-12 min-h-screen px-8">
-        {benefitsData.map((benefit, index) => (
-          <motion.div
-            key={index}
-            className="bg-[#E3D5C5] p-10 rounded-2xl shadow-2xl w-[320px] md:w-[400px] lg:w-[450px] text-center transform transition duration-300 hover:scale-105"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold">{benefit.title}</h2>
-            <p className="mt-4 text-lg text-[#8D775F]">{benefit.description}</p>
-          </motion.div>
-        ))}
-      </section>
+      {/* Scrolling Sections */}
+      {benefitsData.map((benefit, index) => (
+        <motion.section
+          key={index}
+          className={`flex flex-col justify-center items-center min-h-screen px-8 text-center ${
+            index % 2 === 0 ? "bg-[#E3D5C5]" : "bg-[#D6C4A8]"
+          }`}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-5xl font-bold">{benefit.title}</h2>
+          <p className="mt-4 text-lg md:text-xl max-w-3xl text-[#8D775F]">
+            {benefit.description}
+          </p>
+        </motion.section>
+      ))}
 
       {/* Final Call to Action */}
       <motion.section
@@ -54,9 +57,13 @@ export default function Membership() {
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="text-6xl font-extrabold text-[#8D775F]">Join the Elite Circle</h2>
+        <h2 className="text-6xl font-extrabold text-[#8D775F]">
+          Join the Elite Circle
+        </h2>
         <p className="mt-4 text-lg md:text-xl text-[#4A403A] max-w-2xl">
-          Secure your spot and **experience luxury, fashion, and exclusivity** with **Detour Berlin**.
+          Secure your spot and{" "}
+          <b>experience luxury, fashion, and exclusivity</b> with{" "}
+          <b>Detour Berlin</b>.
         </p>
 
         <motion.button
@@ -75,11 +82,12 @@ export default function Membership() {
 const benefitsData = [
   {
     title: "VIP Event Access",
-    description: "Gain entry to exclusive Detour Berlin parties & luxury gatherings.",
+    description:
+      "Gain entry to exclusive Detour Berlin parties & luxury gatherings.",
   },
   {
     title: "Limited Edition Fashion",
-    description: "Get early access to **premium clothing drops & collaborations**.",
+    description: "Get early access to premium clothing drops & collaborations.",
   },
   {
     title: "Private Perks & Rewards",

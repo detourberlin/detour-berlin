@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import Link from "next/link"; // Import Link from Next.js
 
 export default function CreateAccount() {
   return (
@@ -9,7 +10,7 @@ export default function CreateAccount() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-16">
+      <section className="flex flex-col items-center justify-center min-h-[100vh] text-center px-6 py-20">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,7 +31,7 @@ export default function CreateAccount() {
       </section>
 
       {/* Create Account Form */}
-      <section className="flex flex-col items-center justify-center min-h-screen px-6 py-16">
+      <section className="flex flex-col items-center justify-center min-h-[80vh] px-6 py-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -76,12 +77,12 @@ export default function CreateAccount() {
           <div className="mt-6 text-center">
             <p>
               Already have an account?{" "}
-              <a
+              <Link
                 href="/login"
                 className="text-[#8D775F] font-semibold hover:underline"
               >
                 Login here
-              </a>
+              </Link>
             </p>
           </div>
         </motion.div>

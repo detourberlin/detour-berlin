@@ -1,20 +1,21 @@
 "use client";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 
 export default function ForgotPassword() {
   return (
-    <div className="w-full bg-[#F5EFE7] text-[#4A403A] min-h-screen">
+    <div className="w-full bg-[#F5EFE7] text-[#4A403A] min-h-screen flex flex-col">
       {/* Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-16">
+      {/* Forgot Password Section */}
+      <section className="flex flex-col items-center justify-center flex-1 text-center px-6 py-16 mt-32">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-6xl md:text-7xl font-extrabold tracking-tight"
+          className="text-5xl md:text-6xl font-extrabold tracking-tight"
         >
           Forgot Your Password?
         </motion.h1>
@@ -23,25 +24,21 @@ export default function ForgotPassword() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-          className="mt-6 text-lg md:text-2xl text-[#8D775F] max-w-2xl"
+          className="mt-6 text-lg md:text-xl text-[#8D775F] max-w-2xl"
         >
           No worries, we got you. Enter your email to reset your password.
         </motion.p>
-      </section>
 
-      {/* Forgot Password Form */}
-      <section className="flex flex-col items-center justify-center min-h-screen px-6 py-16">
+        {/* Reset Password Form */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="bg-[#E3D5C5] p-12 rounded-2xl shadow-2xl w-full max-w-lg"
+          className="bg-[#E3D5C5] p-10 rounded-2xl shadow-2xl w-full max-w-md mt-20"
         >
-          <h2 className="text-4xl font-bold text-center">Reset Password</h2>
+          <h2 className="text-3xl font-bold text-center">Reset Password</h2>
 
-          {/* Form */}
-          <form className="mt-8 flex flex-col gap-6">
+          <form className="mt-6 flex flex-col gap-5">
             <input
               type="email"
               placeholder="Enter your email"
@@ -49,7 +46,7 @@ export default function ForgotPassword() {
             />
 
             <motion.button
-              whileHover={{ scale: 1.1, backgroundColor: "#4A403A" }}
+              whileHover={{ scale: 1.05, backgroundColor: "#4A403A" }}
               whileTap={{ scale: 0.95 }}
               className="mt-4 bg-[#8D775F] text-white px-8 py-3 rounded-full font-semibold text-lg shadow-xl transition-all"
             >
@@ -58,15 +55,15 @@ export default function ForgotPassword() {
           </form>
 
           {/* Back to Login */}
-          <div className="mt-6 text-center">
-            <a href="/login" className="text-[#8D775F] hover:underline">
+          <div className="mt-5 text-center">
+            <Link href="/login" className="text-[#8D775F] hover:underline">
               Back to Login
-            </a>
+            </Link>
           </div>
         </motion.div>
       </section>
 
-      {/* Extra Space for Scrolling Feel */}
+      {/* Extra Space for Smooth Scrolling */}
       <div className="h-[50vh]"></div>
     </div>
   );

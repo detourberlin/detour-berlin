@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import { FaInstagram, FaTwitter, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 export default function Connect() {
   return (
@@ -103,8 +104,8 @@ export default function Connect() {
 
 // Social Media Icons & Links
 const socialLinks = [
-  { icon: "📷", link: "https://instagram.com" },
-  { icon: "🐦", link: "https://twitter.com" },
-  { icon: "📘", link: "https://facebook.com" },
-  { icon: "🎥", link: "https://youtube.com" },
+  { icon: <FaInstagram />, link: "https://instagram.com" },
+  { icon: <FaTwitter />, link: "https://twitter.com" },
+  { icon: <FaFacebookF />, link: "https://facebook.com" },
+  { icon: <FaYoutube />, link: "https://youtube.com" },
 ];

@@ -5,17 +5,17 @@ import Link from "next/link";
 
 export default function Login() {
   return (
-    <div className="w-full min-h-screen bg-[#F5EFE7] text-[#4A403A]">
+    <div className="w-full min-h-screen bg-[#F5EFE7] text-[#4A403A] flex flex-col">
       {/* Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-16">
+      {/* Login Section */}
+      <section className="flex flex-col items-center justify-center flex-1 text-center px-6 py-16 mt-24">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-6xl md:text-7xl font-extrabold tracking-tight"
+          className="text-5xl md:text-6xl font-extrabold tracking-tight"
         >
           Welcome Back to <span className="text-[#8D775F]">Detour Berlin</span>
         </motion.h1>
@@ -24,27 +24,24 @@ export default function Login() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-          className="mt-6 text-lg md:text-2xl text-[#8D775F] max-w-2xl"
+          className="mt-5 text-lg md:text-xl text-[#8D775F] max-w-2xl"
         >
           Access your exclusive membership and premium benefits.
         </motion.p>
-      </section>
 
-      {/* Login Form Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen px-6 py-16">
+        {/* Login Form */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="bg-[#E3D5C5] p-12 rounded-2xl shadow-2xl w-full max-w-lg"
+          className="bg-[#E3D5C5] p-10 rounded-2xl shadow-2xl w-full max-w-md mt-16"
         >
-          <h2 className="text-4xl font-bold text-center">Sign In</h2>
-          <p className="mt-4 text-lg text-[#8D775F] text-center">
+          <h2 className="text-3xl font-bold text-center">Sign In</h2>
+          <p className="mt-3 text-lg text-[#8D775F] text-center">
             Enter your details to continue your premium journey.
           </p>
 
-          {/* Login Form */}
-          <form className="mt-8 flex flex-col gap-6">
+          <form className="mt-6 flex flex-col gap-5">
             <input
               type="email"
               placeholder="Email Address"
@@ -57,7 +54,7 @@ export default function Login() {
             />
 
             <motion.button
-              whileHover={{ scale: 1.1, backgroundColor: "#4A403A" }}
+              whileHover={{ scale: 1.05, backgroundColor: "#4A403A" }}
               whileTap={{ scale: 0.95 }}
               className="mt-4 bg-[#8D775F] text-white px-8 py-3 rounded-full font-semibold text-lg shadow-xl transition-all"
             >
@@ -65,8 +62,8 @@ export default function Login() {
             </motion.button>
           </form>
 
-          {/* Forgot Password & Sign Up Links */}
-          <div className="mt-6 text-center">
+          {/* Links */}
+          <div className="mt-5 text-center">
             <Link
               href="/forgot-password"
               className="text-[#8D775F] hover:underline"
@@ -88,8 +85,8 @@ export default function Login() {
         </motion.div>
       </section>
 
-      {/* Extra Space for Scrolling Feel */}
-      <div className="h-[80vh]"></div>
+      {/* Extra Space for Light Scrolling */}
+      <div className="h-[60vh]"></div>
     </div>
   );
 }

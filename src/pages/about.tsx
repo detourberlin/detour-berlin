@@ -1,8 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation"; // Import useRouter
 import Navbar from "@/components/Navbar";
 
 export default function About() {
+  const router = useRouter(); // Initialize router
+
   return (
     <div className="w-full bg-[#F5EFE7] text-[#4A403A]">
       {/* Navbar */}
@@ -26,7 +29,8 @@ export default function About() {
           className="mt-6 text-lg md:text-2xl text-[#8D775F] max-w-2xl"
         >
           A movement beyond fashion—where exclusivity meets culture, blending
-          high-end **elegance** with **bold streetwear**.
+          high-end <strong>elegance</strong> with{" "}
+          <strong>bold streetwear</strong>.
         </motion.p>
       </section>
 
@@ -42,10 +46,14 @@ export default function About() {
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold">
-            {section.icon} {section.title}
-          </h2>
-          <p className="mt-4 text-lg md:text-xl max-w-3xl text-[#8D775F]">
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? -2 : 2 }}
+            className="text-6xl"
+          >
+            {section.icon}
+          </motion.div>
+          <h2 className="text-5xl font-bold mt-4">{section.title}</h2>
+          <p className="mt-4 text-lg md:text-xl max-w-3xl text-[#4A403A]">
             {section.description}
           </p>
         </motion.section>
@@ -53,23 +61,23 @@ export default function About() {
 
       {/* Final Call to Action */}
       <motion.section
-        className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-16 bg-[#F5EFE7]"
+        className="flex flex-col items-center justify-center min-h-screen text-center px-6 py-16 bg-[#4A403A] text-white"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="text-6xl font-extrabold text-[#8D775F]">
-          Be Part of the Future
-        </h2>
-        <p className="mt-4 text-lg md:text-xl text-[#4A403A] max-w-2xl">
-          Join **Detour Berlin** and redefine what it means to be exclusive.
+        <h2 className="text-6xl font-extrabold">Be Part of the Future</h2>
+        <p className="mt-4 text-lg md:text-xl max-w-2xl">
+          Join <strong>Detour Berlin</strong> and redefine what it means to be
+          exclusive.
         </p>
 
         <motion.button
-          whileHover={{ scale: 1.1, backgroundColor: "#4A403A" }}
+          whileHover={{ scale: 1.1, backgroundColor: "#8D775F" }}
           whileTap={{ scale: 0.95 }}
-          className="mt-8 bg-[#8D775F] text-white px-14 py-4 rounded-full font-semibold text-lg shadow-xl transition-all"
+          onClick={() => router.push("/membership")} // Redirect to Membership Page
+          className="mt-8 bg-white text-[#4A403A] px-14 py-4 rounded-full font-semibold text-lg shadow-xl transition-all"
         >
           Join the Movement
         </motion.button>

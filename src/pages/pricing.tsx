@@ -1,10 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 
 export default function Pricing() {
+  const router = useRouter();
+
   return (
-    <div className="w-full bg-[#F5EFE7] text-[#4A403A] min-h-screen">
+    <div className="w-full bg-[#F5EFE7] text-[#4A403A]">
       {/* Navbar */}
       <Navbar />
 
@@ -16,7 +19,7 @@ export default function Pricing() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-6xl md:text-7xl font-extrabold tracking-tight"
         >
-          Exclusive <span className="text-[#8D775F]">Membership Pricing</span>
+          Choose Your <span className="text-[#8D775F]">Exclusive Access</span>
         </motion.h1>
 
         <motion.p
@@ -25,43 +28,56 @@ export default function Pricing() {
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           className="mt-6 text-lg md:text-2xl text-[#8D775F] max-w-2xl"
         >
-          Choose your path to exclusivity—monthly or yearly premium access.
+          Elevate your status with premium membership options tailored for the
+          elite.
         </motion.p>
       </section>
 
-      {/* Pricing Cards Section */}
-      <section className="w-full flex flex-wrap justify-center items-center gap-12 min-h-screen px-8">
-        {pricingData.map((plan, index) => (
-          <motion.div
-            key={index}
-            className="bg-[#E3D5C5] p-10 rounded-2xl shadow-2xl w-[320px] md:w-[400px] lg:w-[450px] text-center transform transition duration-300 hover:scale-105"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
+      {/* Scrolling Pricing Sections */}
+      {pricingData.map((plan, index) => (
+        <motion.section
+          key={index}
+          className={`flex flex-col justify-center items-center min-h-screen px-8 text-center ${
+            index % 2 === 0 ? "bg-[#E3D5C5]" : "bg-[#D6C4A8]"
+          }`}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-5xl font-bold">{plan.title}</h2>
+          <p className="mt-4 text-lg md:text-xl max-w-3xl text-[#8D775F]">
+            {plan.description}
+          </p>
+          <p className="mt-6 text-5xl font-extrabold text-[#4A403A]">
+            {plan.price}
+          </p>
+
+          {/* Features */}
+          <ul className="mt-6 space-y-4 text-lg text-[#4A403A] font-medium">
+            {plan.features.map((feature, i) => (
+              <li key={i} className="text-xl">
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          {/* Call to Action */}
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              backgroundColor: "#4A403A",
+              color: "#F5EFE7",
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => router.push("/membership")}
+            className="mt-8 bg-[#8D775F] text-white px-14 py-4 rounded-full font-semibold text-lg shadow-xl 
+                      transition-all duration-300 border-2 border-transparent hover:border-[#F5EFE7]"
           >
-            <h2 className="text-4xl font-bold">{plan.title}</h2>
-            <p className="mt-4 text-lg text-[#8D775F]">{plan.description}</p>
-            <p className="mt-6 text-5xl font-extrabold text-[#4A403A]">
-              {plan.price}
-            </p>
-            <ul className="mt-6 space-y-3 text-lg text-[#4A403A]">
-              {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-center justify-center gap-2">
-                  ✅ {feature}
-                </li>
-              ))}
-            </ul>
-            <motion.button
-              whileHover={{ scale: 1.1, backgroundColor: "#4A403A" }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-8 bg-[#8D775F] text-white px-10 py-3 rounded-full font-semibold text-lg shadow-lg transition-all"
-            >
-              Get Started
-            </motion.button>
-          </motion.div>
-        ))}
-      </section>
+            Get Started
+          </motion.button>
+        </motion.section>
+      ))}
 
       {/* Final Call to Action */}
       <motion.section
@@ -72,17 +88,23 @@ export default function Pricing() {
         viewport={{ once: true }}
       >
         <h2 className="text-6xl font-extrabold text-[#8D775F]">
-          Join the Elite
+          Unlock Exclusive Benefits
         </h2>
         <p className="mt-4 text-lg md:text-xl text-[#4A403A] max-w-2xl">
-          Experience exclusive parties, fashion perks, and VIP access with{" "}
+          Get VIP access, premium fashion drops, and luxury experiences with{" "}
           <b>Detour Berlin</b>.
         </p>
 
         <motion.button
-          whileHover={{ scale: 1.1, backgroundColor: "#4A403A" }}
+          whileHover={{
+            scale: 1.1,
+            backgroundColor: "#4A403A",
+            color: "#F5EFE7",
+          }}
           whileTap={{ scale: 0.95 }}
-          className="mt-8 bg-[#8D775F] text-white px-14 py-4 rounded-full font-semibold text-lg shadow-xl transition-all"
+          onClick={() => router.push("/membership")}
+          className="mt-8 bg-[#8D775F] text-white px-14 py-4 rounded-full font-semibold text-lg shadow-xl 
+                    transition-all duration-300 border-2 border-transparent hover:border-[#F5EFE7]"
         >
           Become a Member
         </motion.button>
@@ -95,7 +117,7 @@ export default function Pricing() {
 const pricingData = [
   {
     title: "Monthly Membership",
-    description: "Access exclusive perks & premium events.",
+    description: "Experience exclusive perks & premium events.",
     price: "$99/month",
     features: [
       "VIP Event Access",
