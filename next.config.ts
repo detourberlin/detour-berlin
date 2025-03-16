@@ -11,7 +11,7 @@ module.exports = {
   async redirects() {
     return [
       {
-         source: '/:path((?!welcome).*)', // Matches all paths except `/welcome`
+      source: '/:path((?!welcome|_next|static|.*\\.(?:png|jpg|svg)$).*)', // Matches all paths except `/welcome`
         destination: '/welcome', // Redirect all other paths to `/welcome`
         permanent: false, 
       },
