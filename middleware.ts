@@ -10,10 +10,10 @@ export function middleware(req: NextRequest) {
   }
 
   // Redirect all other routes to /welcome
-  if (url.pathname !== "/welcome") {
+    if (!url.pathname.startsWith("/welcome")) {
     return NextResponse.redirect(new URL("/welcome", req.url));
   }
-
+  
   return NextResponse.next();
 }
 
