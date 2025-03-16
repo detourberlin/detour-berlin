@@ -1,20 +1,45 @@
 "use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function WelcomePage() {
+  const [videoUrl, setVideoUrl] = useState("");
+
+  useEffect(() => {
+    async function fetchVideoUrl() {
+      try {
+        const res = await fetch("/api/get-video");
+        const data = await res.json();
+
+        if (res.ok) {
+          setVideoUrl(data.url);
+        } else {
+          console.error("Error fetching video:", data.error);
+        }
+      } catch (err) {
+        console.error("Failed to load video", err);
+      }
+    }
+
+    fetchVideoUrl();
+  }, []);
+
   return (
     <div className="relative w-full h-screen flex justify-center items-center overflow-hidden bg-black">
       {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-80"
-      >
-        <source src="/premium-background.mp4" type="video/mp4" />
-      </video>
+      {videoUrl && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-80"
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      )}
 
       {/* Dark Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>
@@ -41,11 +66,8 @@ export default function WelcomePage() {
         <motion.h1
           initial={{ opacity: 0, y: 50, filter: "blur(5px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{
-            duration: 1.2,
-            ease: "easeOut",
-          }}
-          className="text-[1.5rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[3.5rem] font-bold uppercase tracking-wide text-[#2980B9] font-serif mb-6 sm:mb-"
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="text-[1.5rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[3.5rem] font-bold uppercase tracking-wide text-[#2980B9] font-serif mb-6"
         >
           Unfolding Soon
         </motion.h1>
@@ -56,7 +78,6 @@ export default function WelcomePage() {
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
           className="text-lg sm:text-xl md:text-2xl lg:text-2xl text-gray-300 font-light italic tracking-wide mb-3 sm:mb-4"
-          // Reduced margin for closer spacing
         >
           A New Era of Exclusivity is Unfolding
         </motion.p>
