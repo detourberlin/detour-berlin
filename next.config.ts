@@ -13,7 +13,7 @@ module.exports = {
       {
          source: '/:path((?!welcome).*)', // Matches all paths except `/welcome`
         destination: '/welcome', // Redirect all other paths to `/welcome`
-        permanent: true, 
+        permanent: false, 
       },
     ];
   },
