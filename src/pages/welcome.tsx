@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function WelcomePage() {
-  const videoUrl = process.env.BG_URL;
+  const videoUrl = "https://oxaedsctutegvubi.public.blob.vercel-storage.com/premium-background-OppH6jteGJSIUwtXc2tqyMBnTfVLiX.mp4";
   return (
     <div className="relative w-full h-screen flex justify-center items-center overflow-hidden bg-black">
       {/* Background Video */}
