@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function WelcomePage() {
+  const videoUrl = process.env.BG_URL;
   return (
     <div className="relative w-full h-screen flex justify-center items-center overflow-hidden bg-black">
       {/* Background Video */}
@@ -13,7 +14,7 @@ export default function WelcomePage() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover opacity-80"
       >
-        <source src="/premium-background.mp4" type="video/mp4" />
+        <source src={videoUrl} type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}
