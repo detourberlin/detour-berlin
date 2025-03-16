@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (router.pathname !== "/welcome") {
-      router.replace("/welcome");
-    }
-  }, [router.pathname]);
+  // useEffect(() => {
+  //   if (router.pathname !== "/welcome") {
+  //     router.replace("/welcome");
+  //   }
+  // }, [router.pathname]);
 
   return <Component {...pageProps} />;
 }
