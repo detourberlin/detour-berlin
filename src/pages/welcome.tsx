@@ -38,26 +38,12 @@ export default function WelcomePage() {
           />
         </motion.div>
 
-        {/* Main Heading - "Smooth Slide Up" */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50, filter: "blur(5px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{
-            duration: 1.2,
-            ease: "easeOut",
-          }}
-          className="text-[1.5rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[3.5rem] font-bold uppercase tracking-wide text-[#2980B9] font-serif mb-6 sm:mb-"
-        >
-          Unfolding Soon
-        </motion.h1>
-
         {/* Subtext - "Soft Fade" */}
         <motion.p
           initial={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-          className="text-lg sm:text-xl md:text-2xl lg:text-2xl text-gray-300 font-light italic tracking-wide mb-3 sm:mb-4"
-          // Reduced margin for closer spacing
+          className="text-lg sm:text-xl md:text-2xl lg:text-2xl text-gray-100 font-light italic tracking-wide mb- sm:mb-4"
         >
           A New Era of Exclusivity is Unfolding
         </motion.p>
@@ -67,7 +53,7 @@ export default function WelcomePage() {
           initial={{ width: "0%", opacity: 0 }}
           animate={{ width: "67%", opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.6 }}
-          className="h-[2px] bg-[#2980B9] shadow-md"
+          className="h-[2px] bg-gray-100 shadow-md"
         ></motion.div>
       </div>
     </div>
